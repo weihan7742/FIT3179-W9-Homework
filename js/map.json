@@ -1,0 +1,50 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 1200,
+    "height": 500,
+    "title": "Total COVID Cases Per 100k Population of Each State in Malaysia (25th January 2020 - 10th September 2022)",
+    "data": {
+      "url": "data/negeri.json",
+      "format": {
+        "type": "topojson",
+        "feature": "negeri"
+      }
+    },
+    "transform": [{
+      "lookup": "properties.name",
+      "from": {
+        "data": {
+          "url": "data/cases_per_100k.csv"
+        },
+        "key": "state",
+        "fields": ["cases_per_100k"]
+      }
+    }],
+    "mark": {
+      "type": "geoshape",
+      "stroke": "black"
+    },
+    "projection": {
+      "type": "equirectangular"
+    },
+    "encoding": {
+      "color": {
+        "field": "cases_per_100k",
+        "type": "quantitative",
+        "title": "Cases Per 100k Population"
+      },
+      "tooltip": [
+        {
+          "field": "properties.name",
+          "type": "nominal",
+          "title": "State"
+        },
+        {
+          "field": "cases_per_100k",
+          "type": "quantitative",
+          "title": "Cases per 100k Population"
+        }
+      ]
+    }
+  }
+  
