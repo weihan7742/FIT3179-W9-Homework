@@ -22,7 +22,7 @@
     }],
     "mark": {
       "type": "geoshape",
-      "stroke": "black"
+      "stroke": "darkgray"
     },
     "projection": {
       "type": "equirectangular"
