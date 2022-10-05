@@ -1,0 +1,80 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 500,
+    "data": {
+        "url": "data/age_cases.csv"
+    },
+    "params": [
+        {
+            "name": "Select_State",
+            "bind": {
+                "input": "select",
+                "options": [
+                    "Johor",
+                    "Kedah",
+                    "Kelantan",
+                    "Melaka",
+                    "Negeri Sembilan",
+                    "Pahang",
+                    "Perak",
+                    "Perlis",
+                    "Pulau Pinang",
+                    "Sabah",
+                    "Sarawak",
+                    "Selangor",
+                    "Terengganu",
+                    "W.P. Kuala Lumpur",
+                    "W.P. Labuan",
+                    "W.P. Putrajaya"
+                ],
+                "labels": [
+                    "Johor",
+                    "Kedah",
+                    "Kelantan",
+                    "Melaka",
+                    "Negeri Sembilan",
+                    "Pahang",
+                    "Perak",
+                    "Perlis",
+                    "Pulau Pinang",
+                    "Sabah",
+                    "Sarawak",
+                    "Selangor",
+                    "Terengganu",
+                    "W.P. Kuala Lumpur",
+                    "W.P. Labuan",
+                    "W.P. Putrajaya"
+                ],
+                "name": "Select State"
+            }
+        }
+    ],
+    "transform":[
+        {"filter": "datum.state == 'Johor' "}
+    ],
+    "mark": {"type": "arc", "innerRadius": 100},
+    "encoding": {
+        "theta": {"field": "value", "type": "quantitative"},
+        "color": {"field": "variable", "type": "nominal", "title": "Age Group"}
+    },
+    "config": {
+        "background": "transparent",
+        "view": {
+            "stroke": "transparent"
+        },
+        "axisX":{
+            "domain": false,
+            "grid": false,
+            "ticks": false,
+            "labels": false,
+            "title": null
+        },
+        "axisY": {
+            "domain": false,
+            "grid": false,
+            "ticks": false,
+            "title": null
+        }
+    }
+}
